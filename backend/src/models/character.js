@@ -3,7 +3,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class character extends Model {
     static associate(models) {
-      this.belongsToMany(models.favoritecharater,{ through: 'favoritecharater' })
     }
   }
   character.init({

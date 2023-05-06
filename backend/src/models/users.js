@@ -5,7 +5,6 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {
     static associate(models) {
-      this.belongsToMany(models.favoritecharater,{ through: 'favoritecharater' })
     }
   }
   users.init({

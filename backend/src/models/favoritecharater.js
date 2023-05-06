@@ -5,16 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class favoritecharater extends Model {
     static associate(models) {
-      this.belongsToMany(models.users,{ 
-        through: 'UserFavorite',
-        foreignKey: "id_user",
-        otherKey: "id"
-       });
-      this.belongsToMany(models.character,{ 
-        through: 'CharacterFavorite',
-        foreignKey: "id_character",
-        otherKey: "id"
-       });
+      this.belongsTo(models.users,{ foreignKey: 'id_user' });
+      this.belongsTo(models.character,{ foreignKey: 'id_character' });
     }
   }
   favoritecharater.init({
@@ -23,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey:true,
       autoIncrement:true
     },
-    id_user: DataTypes.INTEGER,
-    id_character: DataTypes.INTEGER
+    id_user:DataTypes.INTEGER,
+    id_character:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'favoritecharater',
