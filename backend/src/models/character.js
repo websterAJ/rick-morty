@@ -1,29 +1,26 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Character extends Model {
+  class character extends Model {
     static associate(models) {
-      
     }
   }
-  Character.init({
-    id:{
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+  character.init({
+    id: {
+      type:DataTypes.INTEGER,
+      primaryKey:true,
+      autoIncrement:true
     },
     name: DataTypes.STRING,
+    image: DataTypes.STRING,
     status: DataTypes.STRING,
+    origin: DataTypes.STRING,
     species: DataTypes.STRING,
     gender: DataTypes.STRING,
-    image: DataTypes.STRING,
-    org_name: DataTypes.STRING,
-    org_url: DataTypes.STRING
+    location: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Character',
+    modelName: 'character',
   });
-  return Character;
+  return character;
 };

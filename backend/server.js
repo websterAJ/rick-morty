@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const compression = require('compression')
 const cors = require('cors')
 const helmet = require('helmet')
+const routes = require("./src/routes/index");
+const db = require("./src/models/index");
 
 const PORT = process.env.PORT || 3001
 
@@ -17,16 +19,21 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send('Something is broken.')
-})
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
 
-app.use(function (req, res, next) {
-  res.status(404).send('Sorry we could not find that.')
-})
+app.use("/api", routes);
 
 // Start express app
-app.listen(PORT, function() {
+app.listen(PORT, async ()=> {
   console.log(`Server is running on: ${PORT}`)
-})
+  await db.sequelize.sync({ force: true });
+});

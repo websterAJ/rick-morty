@@ -1,41 +1,23 @@
 {
   "development": {
-    "username": "atorres",
+    "username": "postgres",
     "password": "23124156",
-    "database": "rickMorthy_development",
+    "database": "rickMorty",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "pool": {
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
-    }
+    "dialect": "postgresql"
   },
   "test": {
-    "username": "root",
+    "username": "postgres",
     "password": "23124156",
-    "database": "rickMorthy_test",
+    "database": "rickMorty",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "pool": {
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
-    }
+    "dialect": "postgresql"
   },
   "production": {
-    "username": "root",
+    "username": "postgres",
     "password": "23124156",
-    "database": "rickMorthy_production",
+    "database": "rickMorty",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "pool": {
-      "max": 5,
-      "min": 0,
-      "acquire": 30000,
-      "idle": 10000
-    }
+    "dialect": "postgresql"
   }
 }
